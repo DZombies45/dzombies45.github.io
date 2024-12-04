@@ -1,4 +1,4 @@
-# [My Github Page???](https://dzombies45.github.io/web/)
+# [My Github Page???](https://dzombies45.github.io)
 
 why u here?
 
