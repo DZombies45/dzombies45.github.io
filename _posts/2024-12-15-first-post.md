@@ -1,6 +1,6 @@
 ---
 title: first post
-date: 2024-12-15 13:25:32 +0420
+date: 2024-12-15 13:25:32 +0700
 categories: [Blogging]
 tags: [post]
 toc: false
