@@ -1,5 +1,5 @@
 ---
-title: silky spawner scripg
+title: silky spawner script
 date: 2024-12-16 07:04:08 +0700
 categories: [Addon]
 tags: [addon, tutorial]
