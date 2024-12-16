@@ -9,9 +9,11 @@ description: >-
 
 # silk spawner code
 
-just copy this code, and paste it on your behavior pack script
+just copy this code, and paste it on your behavior pack script. or just download the addon [here on **mcpedl**](https://mcpedl.com/silky-mob-spawner/)
 
 {% include embed/youtube.html id='_mzc4S8TrD0' %}
+
+---
 
 ```js
 // import minecraft api
