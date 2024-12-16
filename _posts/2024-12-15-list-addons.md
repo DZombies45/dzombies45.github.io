@@ -3,9 +3,10 @@ title: list addons
 date: 2024-12-15 20:44:08 +0700
 categories: [Update]
 tags: [post, addon]
+pin: true
+image: ../assets/img/titlemc.png
 ---
 
-![titlemc](../assets/img/titlemc.png)
 
 # this is list of my active addon currenly
 
