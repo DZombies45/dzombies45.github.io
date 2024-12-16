@@ -1,7 +1,7 @@
 ---
 title: silky spawner scripg
 date: 2024-12-16 07:04:08 +0700
-categories: [addon]
+categories: [Addon]
 tags: [addon, tutorial]
 description: >-
     the script of silky mob spawner addon
