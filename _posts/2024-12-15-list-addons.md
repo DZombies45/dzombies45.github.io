@@ -5,8 +5,9 @@ categories: [Update]
 tags: [post, addon]
 pin: true
 image: ../assets/img/titlemc.png
+description: >-
+    list of my addon
 ---
-
 
 # this is list of my active addon currenly
 

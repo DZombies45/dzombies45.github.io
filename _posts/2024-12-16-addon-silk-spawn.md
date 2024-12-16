@@ -11,6 +11,8 @@ description: >-
 
 just copy this code, and paste it on your behavior pack script
 
+{% include embed/youtube.html id='_mzc4S8TrD0' %}
+
 ```js
 // import minecraft api
 import { world, system } from "@minecraft/server";
@@ -35,17 +37,29 @@ world.beforeEvents.playerBreakBlock.subscribe(
         // verify if hold item match pickaxe list above and has silk touch enchantment
         if (!itemStack || !pickaxe.includes(itemStack.typeId)) return;
         if (
-            !itemStack.getComponent("enchantable")?.getEnchantment("silk_touch")
+            !itemStack
+                .getComponent("minecraft:enchantable")
+                ?.getEnchantment("silk_touch")
         )
             return;
 
-        // what to do after
-        const spawnPos = centerBlockToEntity(centerBlock.above(1).location);
+        data.cancel = true;
 
-        // spawn the item, on active tick, couse beforeEvents run on idle tick or read only
-        system.run(() =>
-            block.dimension.spawnItem(block.getItemStack(1, true), spawnPos)
-        );
+        // what to do after
+        const spawnPos = centerBlockToEntity(block.location);
+        const item = block.getItemStack(1, true);
+
+        // spawn the item and add feedback, on the next active tick, couse beforeEvents run on idle tick or read only
+        system.run(() => {
+            pickDurability(player);
+            block.setType("minecraft:air");
+            block.dimension.spawnItem(item, spawnPos);
+            player.playSound("block.mob_spawner.break", {
+                pitch: randomRange(0.8, 1.2),
+                location: block.location,
+                volume: 1
+            });
+        });
     },
     {
         blockTypes: ["minecraft:mob_spawner"]
@@ -61,13 +75,44 @@ function centerBlockToEntity(pos) {
     };
 }
 
+// remove durability from pickaxe
+function pickDurability(player) {
+    const inv = player.getComponent("inventory").container;
+    const item = inv.getItem(player.selectedSlotIndex);
+    if (!item) return true;
+    const durability = item.getComponent("minecraft:durability");
+    const unbreakingLv =
+        item.getComponent("minecraft:enchantable")?.getEnchantment("unbreaking")
+            ?.level || 0;
+    const breakChance = durability.getDamageChance(unbreakingLv);
+
+    if (Math.random() * 100 <= breakChance) durability.damage += 1;
+    if (durability.damage >= durability.maxDurability) {
+        inv.setItem(player.selectedSlotIndex, undefined);
+        player.playSound("random.break", {
+            pitch: randomRange(0.8, 1.2),
+            location: player.location,
+            volume: 1
+        });
+        return true;
+    }
+
+    inv.setItem(player.selectedSlotIndex, item);
+    return false;
+}
+
+// just random function
+function randomRange(min = 0, max = 1) {
+    return Math.random() * (max - min) + min;
+}
+
 // just to check if addon work or not
 world.afterEvents.playerSpawn.subscribe(data => {
     if (!data.initialSpawn) return;
     data.player.sendMessage({
         rawtext: [
             {
-                text: `§2+ §asilky mob spawn v${version} is installed`
+                text: `§2+ §asilky spawn v${version} is installed`
             }
         ]
     });
