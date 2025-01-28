@@ -13,8 +13,8 @@ it's an addon that will make changing noteblock note easy with ui (fornow)
 
 ## **todo**
 
-> [x] Make UI to change it
-> [ ] Add block to replace it
-> [ ] Make crafting for it
-> [ ] Add sound and particle for each note
-> [ ] Add all(most) sound type block
+[x] Make UI to change it
+[ ] Add block to replace it
+[ ] Make crafting for it
+[ ] Add sound and particle for each note
+[ ] Add all(most) sound type block
