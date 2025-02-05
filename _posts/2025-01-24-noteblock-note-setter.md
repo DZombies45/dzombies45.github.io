@@ -4,12 +4,15 @@ date: 2025-01-24 07:08:54 +0700
 categories: [Addon]
 tags: [addon, tutorial]
 description: >-
-  note for my NBNS addon
+  note for my NBNS addon (on pause)
 ---
 
 # working on it
 
 it's an addon that will make changing noteblock note easy with ui (fornow)
+
+so it seems making it its own block will be hard, so will need to wait till we can check restone update on custom block
+like its posible with tick interval, but when i test it, it will lag after some block is placed on low end device, so ill wait till then
 
 ## **download**
 
