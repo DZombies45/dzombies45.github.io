@@ -21,6 +21,7 @@ so i here is what i want to add when i update this addon, so unless i add 1 of t
 - [ ] auto sort to/from chest
 - [ ] better item(enchant) filter
 - [x] make sort template
+- [x] ui for sort action form
 
 # why do i use action event
 
