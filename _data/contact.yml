@@ -6,9 +6,9 @@
 - type: twitter
   icon: "fa-brands fa-x-twitter"
 
-- type: bluesky
-  icon: "fa-brands fa-bluesky"
-  url: "https://bsky.app/profile/dzombies.bsky.social" # Fill with your Bluesky profile link
+# - type: bluesky
+#   icon: "fa-brands fa-bluesky"
+#   url: "https://bsky.app/profile/dzombies.bsky.social" # Fill with your Bluesky profile link
 
 - type: youtube
   icon: "fa-brands fa-youtube"
@@ -19,11 +19,11 @@
   url: "https://discord.gg/SmzWxC2KUm"
 
 - type: curseforge
-  icon: "fa-solid fa-fire-flame-curved"
+  icon: "icon-curseforge"
   url: "https://www.curseforge.com/members/dzombies45/projects"
 
 - type: mcpedl
-  icon: "fa-solid fa-box-archive"
+  icon: "icon-mcpedl"
   url: "https://mcpedl.com/user/dzombies45"
 
 - type: rss
