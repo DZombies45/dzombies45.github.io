@@ -33,4 +33,12 @@ toc: false
 
 # 📖 visitor
 
-[![](https://visitcount.itsvg.in/api?id=Dzombies45&label=Profile%20Views&color=1&icon=1&pretty=true)](https://visitcount.itsvg.in)
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=DZombies45&label=Profile%20views&color=03ad00&style=for-the-badge" alt="dzombies45" />
+</p>
+
+# 🧲 Discord
+
+<p align="center">
+<iframe src="https://discord.com/widget?id=1046307329622167662&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+</p>
