@@ -1,7 +1,12 @@
 ---
 title: about
-date: 2025-12-13T08:50:40Z
-showAuthor: false
+layout: simple
 ---
 
 {{< mdimporter url="https://raw.githubusercontent.com/DZombies45/DZombies45/refs/heads/main/README.md" >}}
+
+> webpage use:
+>
+> - [Hugo](https://gohugo.io/)
+> - [Blowfish](https://blowfish.page/)
+> - [giscus](https://giscus.app/)
