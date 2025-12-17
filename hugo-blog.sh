@@ -7,6 +7,7 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
+
 TITLE_RAW="$1"
 SLUG=$(echo "$TITLE_RAW" \
   | tr '[:upper:]' '[:lower:]' \
@@ -14,11 +15,10 @@ SLUG=$(echo "$TITLE_RAW" \
   | sed -E 's/^-+|-+$//g')
 FEATURE_SRC="$2"
 
-POST_DIR="content/projects/$SLUG"
+POST_DIR="content/posts/$SLUG"
 
 mkdir -p "$POST_DIR"
 
-# Create index.md
 
 
 # Process feature image
@@ -38,7 +38,7 @@ draft: true
 title: "$TITLE_RAW"
 date: $(date +"%Y-%m-%dT%H:%M:%S%z")
 featureImage: "feature.png"
-tags: ["project","minecraft"]
+tags: ["blog","minecraft"]
 comments: true
 ---
 
@@ -50,7 +50,8 @@ else
 draft: true
 title: "$TITLE_RAW"
 date: $(date +"%Y-%m-%dT%H:%M:%S%z")
-tags: ["project","minecraft"]
+tags: ["minecraft"]
+tags: ["blog","minecraft"]
 comments: true
 ---
 
