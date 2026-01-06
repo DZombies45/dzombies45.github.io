@@ -87,6 +87,10 @@
           data-oid="views_{{ $path }}"
           data-oid-likes="likes_{{ $path }}"></script>
       {{ end }}
+      
+      {{ if .Params.linkvertise }}
+        {{ partial "ads/linkvertise.html" . }}
+      {{ end }}
     </section>
 
     {{/* Footer */}}
