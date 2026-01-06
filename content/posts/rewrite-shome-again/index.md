@@ -1,5 +1,4 @@
 ---
-draft: true
 title: "Rewrite SHome again"
 date: 2026-01-06T10:05:50+0700
 featureImage: "feature.png"
