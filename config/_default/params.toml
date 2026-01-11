@@ -148,11 +148,11 @@ forgejoDefaultServer = "https://v11.next.forgejo.org"
   # domain = "llama.yoursite.com"
 
 [umamiAnalytics]
-  # websiteid = "ABC12345"
-  # domain = "llama.yoursite.com"
-  # dataDomains = "yoursite.com,yoursite2.com"
-  # scriptName = ""
-  # enableTrackEvent = true
+  websiteid = "fae219f9-77d7-4b7d-860d-0cd5ebf46b37"
+  domain = "cloud.umami.is"
+  dataDomains = ""
+  scriptName = ""
+  enableTrackEvent = true
 
 [selineAnalytics]
   # token = "XXXXXX"
