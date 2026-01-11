@@ -10,3 +10,4 @@ layout: simple
 > - [Hugo](https://gohugo.io/)
 > - [Blowfish](https://blowfish.page/)
 > - [giscus](https://giscus.app/)
+> - [Umami](https://umami.is)
