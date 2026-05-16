@@ -36,15 +36,12 @@
       {{ $showToc := and $enableToc (in .TableOfContents "<ul") }}
       {{ $topClass := cond (hasPrefix site.Params.header.layout "fixed") "lg:top-[140px]" "lg:top-10" }}
       {{ if $showToc }}
-        <div class="order-first lg:ml-auto px-0 lg:order-last lg:ps-8 lg:max-w-2xs">
+        <div class="order-first lg:ms-auto px-0 lg:order-last lg:ps-8 lg:max-w-2xs">
           <div class="toc ps-5 print:hidden lg:sticky {{ $topClass }}">
-            {{ if $showToc }}
-              {{ partial "toc.html" . }}
-            {{ end }}
+            {{ partial "toc.html" . }}
           </div>
         </div>
       {{ end }}
-
 
       <div class="min-w-0 min-h-0 max-w-fit">
         {{ partial "series/series.html" . }}
@@ -53,13 +50,21 @@
           {{ $defaultReplyByEmail := site.Params.replyByEmail }}
           {{ $replyByEmail := default $defaultReplyByEmail .Params.replyByEmail }}
           {{ if $replyByEmail }}
+            {{ $replySubject := i18n "article.reply_to" (dict "Title" .Title) | default (printf "Reply to %s" .Title) }}
             <strong class="block mt-8">
               <a
-                target="_blank"
-                class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-                href="mailto:{{ site.Params.Author.email }}?subject={{ replace (printf "Reply to %s" .Title) "\"" "'" }}">
+                class="email-link m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+                href="#"
+                data-email="{{ site.Params.Author.email | base64Encode }}"
+                data-subject="{{ replace $replySubject "\"" "'" }}">
                 {{ i18n "article.reply_by_email" | default "Reply by Email" }}
               </a>
+              <noscript>
+                <span
+                  class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 dark:bg-neutral-700 dark:text-neutral-300">
+                  {{ i18n "article.reply_by_email" | default "Reply by Email" }} (require JavaScript)
+                </span>
+              </noscript>
             </strong>
           {{ end }}
         </div>
@@ -69,28 +74,12 @@
         {{ partial "series/series-closed.html" . }}
         {{ partial "sharing-links.html" . }}
         {{ partial "related.html" . }}
-      </div>
 
-      {{ $translations := .AllTranslations }}
-      {{ with .File }}
-        {{ $path := .Path }}
-        {{ range $translations }}
-          {{ $lang := print "."  .Lang  ".md" }}
-          {{ $path = replace $path $lang ".md" }}
+        {{/* Linkvertise Ads */}}
+        {{ if .Params.linkvertise }}
+          {{ partial "ads/linkvertise.html" . }}
         {{ end }}
-        {{ $jsPage := resources.Get "js/page.js" }}
-        {{ $jsPage = $jsPage | resources.Minify | resources.Fingerprint (site.Params.fingerprintAlgorithm | default "sha512") }}
-        <script
-          type="text/javascript"
-          src="{{ $jsPage.RelPermalink }}"
-          integrity="{{ $jsPage.Data.Integrity }}"
-          data-oid="views_{{ $path }}"
-          data-oid-likes="likes_{{ $path }}"></script>
-      {{ end }}
-      
-      {{ if .Params.linkvertise }}
-        {{ partial "ads/linkvertise.html" . }}
-      {{ end }}
+      </div>
     </section>
 
     {{/* Footer */}}
@@ -99,7 +88,7 @@
       {{ if .Params.showComments | default (site.Params.article.showComments | default false) }}
         {{ if templates.Exists "partials/comments.html" }}
           <div class="pt-3">
-            <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+            <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
             <div class="pt-3">
               {{ partial "comments.html" . }}
             </div>
@@ -113,7 +102,7 @@
 {{ end }}
 
 {{ define "SingleAuthor" }}
-  {{ $authorsData := site.Data.authors }}
+  {{ $authorsData := hugo.Data.authors }}
   {{ $taxonomies := site.Taxonomies.authors }}
   {{ $baseURL := site.BaseURL }}
   {{ $taxonomyLink := 0 }}
@@ -139,7 +128,7 @@
       {{ end }}
 
       {{ $finalLink := $taxonomyLink }}
-      {{ $currentLang := site.Language.Lang }}
+      {{ $currentLang := site.Language.Name }}
       {{ if eq site.LanguagePrefix "" }}
         {{ $finalLink = printf "%sauthors/%s/" $baseURL $author }}
       {{ else }}
@@ -152,8 +141,10 @@
   {{ if or $taxonomyLink $showAuthor }}
     <div class="{{ cond $isAuthorBottom "mb-10" "mb-5" }}"></div>
   {{ end }}
-  
+
+  {{/* Giscus Comments */}}
   {{ if .Params.comments | default true }}
     {{ partial "comments/giscus.html" . }}
   {{ end }}
 {{ end }}
+
