@@ -82,9 +82,10 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@v3 # upgrade ke v3
         with:
-          hugo-version: ${{ env.HUGO_VERSION }} # Specify exact version instead of "latest"
+          hugo-version: ${{ env.HUGO_VERSION }}
+          extended: true
 
       - name: Setup Pages
         id: pages
